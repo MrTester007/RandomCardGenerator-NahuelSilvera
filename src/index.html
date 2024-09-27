@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
+    <title>Random Card Generator</title>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -11,19 +11,107 @@
       crossorigin="anonymous"
     />
     <link rel="shortcut icon" href="./4geeks.ico" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
+    <div
+      class="dropdown-container"
+      style="position: fixed; top: 20px; left: 20px;"
+    >
+      <div class="d-flex flex-column align-items-start">
+        <label for="deckType" class="text-light mb-2">More Options</label>
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="deckTypeBtn"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-selected="Poker"
+        >
+          Select Deck Type
+        </button>
+        <div class="dropdown-menu" aria-labelledby="deckTypeBtn">
+          <a
+            class="dropdown-item"
+            href="#"
+            onclick="window.setDeckType('Poker')"
+            >Poker Cards</a
+          >
+          <a
+            class="dropdown-item"
+            href="#"
+            onclick="window.setDeckType('Yorugua')"
+            >Yorugas Cards</a
+          >
+          <a
+            class="dropdown-item"
+            href="#"
+            onclick="window.setDeckType('Argento')"
+            >Mazo Argento</a
+          >
+        </div>
+        <div class="form-check mt-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="autoChange"
+            onchange="window.toggleAutoChange(this)"
+          />
+          <label class="form-check-label text-light" for="autoChange">
+            Cambiar Carta cada 10 Segundos
+          </label>
+        </div>
       </div>
     </div>
+
+    <div class="d-flex flex-column align-items-center mt-3" id="buttonsContent">
+      <div
+        class="controls d-flex flex-column align-items-center mt-4"
+        style="width: 300px;"
+      >
+        <button
+          type="button"
+          class="btn btn-light mb-3"
+          onclick="window.randomCard(window.selectedDeck)"
+        >
+          Random Card
+        </button>
+        <div class="d-flex flex-column align-items-center">
+          <label for="cardSize" class="text-light mb-2">Card Size</label>
+          <input
+            type="range"
+            class="custom-range"
+            id="cardSize"
+            name="cardSize"
+            min="0"
+            max="100"
+            value="50"
+            style="width: 200px;"
+            oninput="window.changeCardSize(this.value)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center fixed-bottom pb-3">
+      <div class="text-center text-white">
+        Made with ❤️ by Nahuel Silvera
+        <div>
+          <a href="https://www.4geeksacademy.com" class="text-white"
+            >4Geeks Academy</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
